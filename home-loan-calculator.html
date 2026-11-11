@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>होम लोन कैलकुलेटर: EMI और साल-दर-साल हिसाब | हिसाब किताब</title>
+<meta name="description" content="होम लोन की राशि, ब्याज दर और सालों की अवधि भरकर EMI, कुल ब्याज और साल-दर-साल बाकी रकम की तालिका देखिए। मुफ्त हिंदी होम लोन कैलकुलेटर।">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="brand" href="/"><svg width="34" height="34" viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="9" fill="#0e7c66"/><text x="18" y="26" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff" font-family="system-ui,sans-serif">₹</text></svg> हिसाब किताब</a></div></header>
+<main class="wrap">
+<h1>होम लोन कैलकुलेटर</h1>
+<p class="lead">लोन की राशि, ब्याज दर और अवधि भरिए। महीने की EMI के साथ यह भी दिखेगा कि हर साल कितना मूलधन और कितना ब्याज चुकता है।</p>
+
+<form class="tool" data-calc="homeloan" autocomplete="off">
+  <div class="field"><label for="amount">होम लोन की राशि (₹)</label>
+  <input id="amount" name="amount" type="number" inputmode="decimal" step="any" min="0" value="5000000"></div>
+  <div class="row">
+    <div class="field"><label for="rate">सालाना ब्याज दर (%)</label>
+    <input id="rate" name="rate" type="number" inputmode="decimal" step="any" min="0" value="8.5"></div>
+    <div class="field"><label for="years">अवधि (साल)</label>
+    <input id="years" name="years" type="number" inputmode="decimal" step="any" min="1" value="20"></div>
+  </div>
+  <button class="go" type="submit">होम लोन का हिसाब देखिए</button>
+  <div id="result" aria-live="polite" hidden></div>
+</form>
+
+<h2>होम लोन की EMI में ब्याज पहले ज़्यादा क्यों होता है</h2>
+<p>हर महीने का ब्याज बाकी बची रकम पर लगता है। शुरू में बाकी रकम सबसे ज़्यादा होती है, इसलिए किश्त का बड़ा हिस्सा ब्याज में जाता है। जैसे-जैसे मूलधन घटता है, ब्याज घटता है और मूलधन वाला हिस्सा बढ़ता जाता है। ऊपर की तालिका में यही साल-दर-साल दिखता है।</p>
+<p><strong>उदाहरण:</strong> ₹50 लाख का होम लोन, 8.5% सालाना ब्याज पर 20 साल के लिए लें, तो महीने की EMI लगभग ₹43,391 आती है। पहले साल में करीब ₹4.21 लाख ब्याज और सिर्फ़ करीब ₹1 लाख मूलधन चुकता है। पूरे लोन पर कुल ब्याज लगभग ₹54 लाख बनता है।</p>
+<p>किसी भी दूसरे लोन की किश्त के लिए हमारा <a href="emi-calculator">EMI कैलकुलेटर</a> देखिए।</p>
+
+<h2>अक्सर पूछे जाने वाले सवाल</h2>
+<details><summary>अवधि बढ़ाने से क्या होता है?</summary>
+<p>EMI घटती है, पर कुल ब्याज काफ़ी बढ़ जाता है। अलग-अलग साल डालकर देखिए कि कुल ब्याज कितना बदलता है।</p></details>
+<details><summary>फ्लोटिंग ब्याज दर में यह हिसाब कितना सही है?</summary>
+<p>यह कैलकुलेटर पूरी अवधि में एक ही ब्याज दर मानता है। फ्लोटिंग दर बदलने पर EMI या अवधि बदल सकती है, इसलिए असली हिसाब बैंक के स्टेटमेंट से मिलाइए।</p></details>
+<details><summary>क्या इसमें प्रोसेसिंग फीस और बीमा जुड़ा है?</summary>
+<p>नहीं। प्रोसेसिंग फीस, बीमा और दूसरे शुल्क इसमें शामिल नहीं हैं।</p></details>
+<details><summary>होम लोन पर टैक्स की छूट कितनी मिलेगी?</summary>
+<p>यह आपकी टैक्स व्यवस्था और मौजूदा नियमों पर निर्भर करता है, और नियम बदलते रहते हैं। इसके लिए किसी टैक्स जानकार या CA से पूछिए।</p></details>
+</main>
+<div class="wrap"><footer><p>नतीजे अनुमान हैं और लोन की सलाह नहीं हैं। असली किश्त और शर्तें बैंक से पक्की कर लीजिए।</p><p class="flinks"><a href="/">सभी कैलकुलेटर</a><a href="privacy-policy">प्राइवेसी पॉलिसी</a><a href="about">हमारे बारे में</a></p></footer></div>
+<script src="app.js"></script>
+</body>
+</html>

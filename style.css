@@ -60,3 +60,13 @@ details p{margin:8px 0 0}
 .tools a span{color:var(--muted);font-size:15px}
 .tools a:hover{border-color:var(--accent)}
 footer{margin:40px 0 24px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+.tablewrap{margin-top:14px}
+.table-title{font-weight:600;margin:0 0 6px}
+.tablescroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:480px;font-size:14px;line-height:1.5}
+th,td{padding:6px 8px;border-top:1px solid var(--rule);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--muted);font-weight:600}
+footer p{margin:0 0 8px}
+footer .flinks a{margin-right:14px}
+.updated{color:var(--muted);font-size:14px}
