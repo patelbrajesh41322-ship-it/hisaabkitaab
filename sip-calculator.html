@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SIP कैलकुलेटर: हर महीने के निवेश से अनुमानित रकम | हिसाब किताब</title>
+<meta name="description" content="हर महीने की SIP रकम, अनुमानित सालाना रिटर्न और समय भरकर कुल निवेश और अनुमानित रकम देखिए। मुफ्त हिंदी SIP कैलकुलेटर।">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="brand" href="/"><svg width="34" height="34" viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="9" fill="#0e7c66"/><text x="18" y="26" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff" font-family="system-ui,sans-serif">₹</text></svg> हिसाब किताब</a></div></header>
+<main class="wrap">
+<h1>SIP कैलकुलेटर</h1>
+<p class="lead">हर महीने की रकम, मानी हुई सालाना कमाई और समय भरिए। कुल निवेश और अनुमानित रकम तुरंत दिख जाएगी।</p>
+
+<form class="tool" data-calc="sip" autocomplete="off">
+  <div class="field"><label for="monthly">हर महीने का निवेश (₹)</label>
+  <input id="monthly" name="monthly" type="number" inputmode="decimal" step="any" min="0" value="5000"></div>
+  <div class="row">
+    <div class="field"><label for="rate">मानी हुई सालाना कमाई (%)</label>
+    <input id="rate" name="rate" type="number" inputmode="decimal" step="any" min="0" value="12"></div>
+    <div class="field"><label for="years">समय (साल)</label>
+    <input id="years" name="years" type="number" inputmode="decimal" step="any" min="0" value="10"></div>
+  </div>
+  <button class="go" type="submit">SIP का हिसाब देखिए</button>
+  <div id="result" aria-live="polite" hidden></div>
+</form>
+
+<h2>SIP कैलकुलेटर कैसे काम करता है</h2>
+<p>SIP में आप हर महीने एक तय रकम म्यूचुअल फंड में लगाते हैं। यह कैलकुलेटर मानता है कि हर महीने की शुरुआत में बराबर रकम लगती है और सालाना कमाई एक ही दर से मिलती रहती है।</p>
+<p class="formula">रकम = M × ((1 + i)<sup>n</sup> − 1) ÷ i × (1 + i)</p>
+<p>यहाँ M हर महीने का निवेश है, i महीने की दर (सालाना दर ÷ 12 ÷ 100) और n कुल महीनों की संख्या है।</p>
+<p><strong>उदाहरण:</strong> हर महीने ₹5,000, 12% सालाना की मानी हुई कमाई पर 10 साल लगाएँ, तो कुल निवेश ₹6 लाख होता है और अनुमानित रकम लगभग ₹11.62 लाख बनती है।</p>
+
+<h2>अक्सर पूछे जाने वाले सवाल</h2>
+<details><summary>क्या यह रकम पक्की मिलती है?</summary>
+<p>नहीं। म्यूचुअल फंड का रिटर्न बाज़ार के हिसाब से ऊपर-नीचे होता है। 12% यहाँ सिर्फ़ एक मानी हुई दर है, गारंटी नहीं। अलग-अलग दर डालकर देखिए कि नतीजा कितना बदलता है।</p></details>
+<details><summary>बीच में रकम बदली जाए तो?</summary>
+<p>यह कैलकुलेटर पूरे समय एक जैसी रकम मानता है। रकम बढ़ाने-घटाने पर असली नतीजा अलग होगा।</p></details>
+<details><summary>क्या इसमें टैक्स और खर्च जुड़े हैं?</summary>
+<p>नहीं। फंड का खर्च और टैक्स इसमें शामिल नहीं हैं, इसलिए हाथ में आने वाली रकम इससे कम हो सकती है।</p></details>
+</main>
+<div class="wrap"><footer>म्यूचुअल फंड निवेश बाज़ार के जोखिमों के अधीन हैं। नतीजे अनुमान हैं और निवेश की सलाह नहीं हैं। <a href="/">सभी कैलकुलेटर</a></footer></div>
+<script src="app.js"></script>
+</body>
+</html>

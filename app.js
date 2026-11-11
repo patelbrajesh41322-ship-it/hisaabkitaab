@@ -1,0 +1,90 @@
+(function () {
+  'use strict';
+
+  var inr = new Intl.NumberFormat('en-IN', { maximumFractionDigits: 0 });
+  function rupee(n) { return '₹ ' + inr.format(Math.round(n)); }
+  function val(f, name) { return parseFloat(f.elements[name].value); }
+
+  var calcs = {
+    emi: function (f) {
+      var P = val(f, 'amount'), r = val(f, 'rate'), t = val(f, 'tenure');
+      var n = f.elements.unit.value === 'years' ? Math.round(t * 12) : Math.round(t);
+      if (!(P > 0)) return { error: 'लोन की राशि 0 से ज़्यादा लिखिए।' };
+      if (!(r >= 0) || r > 100) return { error: 'ब्याज दर 0 से 100 के बीच लिखिए।' };
+      if (!(n >= 1)) return { error: 'अवधि कम से कम 1 महीना लिखिए।' };
+      if (n > 600) return { error: 'अवधि 50 साल (600 महीने) तक ही लिखिए।' };
+      var i = r / 12 / 100, emi;
+      if (i === 0) { emi = P / n; }
+      else { var g = Math.pow(1 + i, n); emi = P * i * g / (g - 1); }
+      var total = emi * n;
+      return {
+        head: ['हर महीने की EMI', rupee(emi)],
+        rows: [
+          ['लोन की राशि', rupee(P)],
+          ['कुल ब्याज', rupee(total - P)],
+          ['कुल भुगतान', rupee(total)],
+          ['किश्तों की संख्या', n + ' महीने']
+        ]
+      };
+    },
+
+    sip: function (f) {
+      var M = val(f, 'monthly'), r = val(f, 'rate'), y = val(f, 'years');
+      var n = Math.round(y * 12);
+      if (!(M > 0)) return { error: 'हर महीने की रकम 0 से ज़्यादा लिखिए।' };
+      if (!(r >= 0) || r > 100) return { error: 'रिटर्न 0 से 100 के बीच लिखिए।' };
+      if (!(n >= 1)) return { error: 'समय कम से कम 1 महीना लिखिए।' };
+      if (n > 600) return { error: 'समय 50 साल तक ही लिखिए।' };
+      var i = r / 12 / 100, fv;
+      if (i === 0) { fv = M * n; }
+      else { fv = M * ((Math.pow(1 + i, n) - 1) / i) * (1 + i); }
+      var invested = M * n;
+      return {
+        head: ['अनुमानित कुल रकम', rupee(fv)],
+        rows: [
+          ['कुल निवेश', rupee(invested)],
+          ['अनुमानित कमाई', rupee(fv - invested)],
+          ['निवेश की अवधि', n + ' महीने']
+        ]
+      };
+    }
+  };
+
+  if (typeof module !== 'undefined') { module.exports = calcs; }
+  if (typeof document === 'undefined') { return; }
+
+  var form = document.querySelector('form[data-calc]');
+  var out = document.getElementById('result');
+  if (!form || !out) { return; }
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+
+  function render(r) {
+    out.hidden = false;
+    out.textContent = '';
+    if (r.error) { out.appendChild(el('p', 'err', r.error)); return; }
+    var head = el('div', 'head');
+    head.appendChild(el('span', 'head-label', r.head[0]));
+    head.appendChild(el('strong', 'head-value', r.head[1]));
+    out.appendChild(head);
+    var ul = el('ul', 'ledger');
+    r.rows.forEach(function (row) {
+      var li = el('li');
+      li.appendChild(el('span', 'k', row[0]));
+      li.appendChild(el('span', 'dots'));
+      li.appendChild(el('span', 'v', row[1]));
+      ul.appendChild(li);
+    });
+    out.appendChild(ul);
+    out.appendChild(el('p', 'note', 'नतीजे अनुमान हैं, सलाह नहीं।'));
+  }
+
+  function run() { render(calcs[form.getAttribute('data-calc')](form)); }
+  form.addEventListener('submit', function (e) { e.preventDefault(); run(); });
+  run();
+})();

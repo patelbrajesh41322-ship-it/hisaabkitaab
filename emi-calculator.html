@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EMI कैलकुलेटर: लोन की महीने की किश्त निकालिए | हिसाब किताब</title>
+<meta name="description" content="लोन की राशि, ब्याज दर और अवधि भरकर तुरंत EMI, कुल ब्याज और कुल भुगतान देखिए। होम लोन, कार लोन और पर्सनल लोन के लिए मुफ्त हिंदी कैलकुलेटर।">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="brand" href="/"><svg width="34" height="34" viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="9" fill="#0e7c66"/><text x="18" y="26" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff" font-family="system-ui,sans-serif">₹</text></svg> हिसाब किताब</a></div></header>
+<main class="wrap">
+<h1>EMI कैलकुलेटर</h1>
+<p class="lead">लोन की राशि, ब्याज दर और अवधि भरिए। महीने की किश्त, कुल ब्याज और कुल भुगतान तुरंत दिख जाएगा।</p>
+
+<form class="tool" data-calc="emi" autocomplete="off">
+  <div class="field"><label for="amount">लोन की राशि (₹)</label>
+  <input id="amount" name="amount" type="number" inputmode="decimal" step="any" min="0" value="500000"></div>
+  <div class="row">
+    <div class="field"><label for="rate">सालाना ब्याज दर (%)</label>
+    <input id="rate" name="rate" type="number" inputmode="decimal" step="any" min="0" value="8.5"></div>
+    <div class="field"><label for="tenure">अवधि</label>
+    <input id="tenure" name="tenure" type="number" inputmode="decimal" step="any" min="0" value="10"></div>
+  </div>
+  <div class="field"><label for="unit">अवधि की इकाई</label>
+  <select id="unit" name="unit"><option value="years">साल</option><option value="months">महीने</option></select></div>
+  <button class="go" type="submit">EMI निकालिए</button>
+  <div id="result" aria-live="polite" hidden></div>
+</form>
+
+<h2>EMI कैसे निकलती है</h2>
+<p>EMI का मतलब है हर महीने बैंक को दी जाने वाली बराबर किश्त। इसमें हर बार कुछ हिस्सा ब्याज का और कुछ मूलधन का होता है। शुरू की किश्तों में ब्याज ज़्यादा और मूलधन कम जाता है, और समय के साथ यह उलट जाता है।</p>
+<p class="formula">EMI = P × r × (1 + r)<sup>n</sup> ÷ ((1 + r)<sup>n</sup> − 1)</p>
+<p>यहाँ P लोन की राशि है, r महीने की ब्याज दर (सालाना दर ÷ 12 ÷ 100) और n किश्तों की कुल संख्या है।</p>
+<p><strong>उदाहरण:</strong> ₹5,00,000 का लोन, 8.5% सालाना ब्याज पर 10 साल के लिए लें, तो महीने की EMI लगभग ₹6,199 आती है और कुल ब्याज लगभग ₹2.44 लाख देना पड़ता है।</p>
+
+<h2>अक्सर पूछे जाने वाले सवाल</h2>
+<details><summary>EMI कम कैसे हो सकती है?</summary>
+<p>तीन तरीके हैं: अवधि बढ़ाना, ज़्यादा रकम पहले (डाउन पेमेंट) देना, या कम ब्याज दर वाले बैंक में लोन ट्रांसफर करवाना। अवधि बढ़ाने से EMI घटती है, पर कुल ब्याज बढ़ जाता है।</p></details>
+<details><summary>अगर ब्याज दर बदलती रहे तो?</summary>
+<p>यह कैलकुलेटर पूरी अवधि में एक ही ब्याज दर मानता है। फ्लोटिंग दर वाले लोन में दर बदलने पर EMI या अवधि बदल सकती है।</p></details>
+<details><summary>क्या प्रोसेसिंग फीस इसमें जुड़ी है?</summary>
+<p>नहीं। प्रोसेसिंग फीस, बीमा और दूसरे शुल्क इसमें शामिल नहीं हैं, इसलिए बैंक की असली किश्त थोड़ी अलग हो सकती है।</p></details>
+</main>
+<div class="wrap"><footer>नतीजे अनुमान हैं और लोन की सलाह नहीं हैं। असली किश्त और शर्तें बैंक से पक्की कर लीजिए। <a href="/">सभी कैलकुलेटर</a></footer></div>
+<script src="app.js"></script>
+</body>
+</html>
